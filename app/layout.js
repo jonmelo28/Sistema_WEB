@@ -1,30 +1,19 @@
-
+import Sidebar from '@/components/Sidebar';
 import './globals.css';
-import Image from 'next/image';
-import Link from 'next/link';
+import Navbar from '@/components/Navbar';
 
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body>
-        <div>
-          <aside className="bg-zinc-900
-          h-full p-4 w-[250px]" >
-            <Link href="/">
-              <Image src="/images/jm.png"
-               width={150}
-               height={150}
-              />
-            </Link>
-            <nav>
-              <li>
-                Usuario
-              </li>
-            </nav>
-          </aside>
+      <body className="grid [grid-template-columns:250px_1fr] min-h-[100vh]">
+        <div className='relative'>
+         <Sidebar />
         </div>
-        <div></div>  
+        <div>
+         <Navbar/>
+         <main className="mt-16 p-4">{children}</main>
+        </div>  
       </body>
     </html>
   );
