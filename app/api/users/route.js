@@ -1,9 +1,9 @@
 import User from "@/models/userModel";
-import mongoose, { connect } from "mongoose";
+import { connectToDB } from "@/utils/DAO";
 import { NextResponse } from "next/server";
 
 export async function GET(request){
-    await connect("mongodb://localhost:27017/teste");
+    await connectToDB();
 
     const data = {
         firstName:"Jonatha",
