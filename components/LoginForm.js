@@ -14,7 +14,9 @@ export default function LoginForm(){
 
      const handleSubmit = (e) => {
       e.preventDefault();
+
       setIsLoading(true);
+      setMessage("");
 
      signIn('credentials',{
           email: emailRef.current.value,
@@ -23,16 +25,14 @@ export default function LoginForm(){
       }).then(res => {
         setIsLoading(false);
 
-        if (res.status === 401){
+        if (res.error === "CredentialsSignin"){
           return setMessage("Email ou senha errado");
         } else  if(res.error){
-          return setMessage("ALgo deu errado, temte novamente mais tarde");
+          return setMessage("Algo deu errado, tente novamente");
         }
 
-        if(res.error) return;
-
         router.push("/");
-        //02:50
+        //02:50 video 2
       }).catch(err => alert("erro"));
      };
 

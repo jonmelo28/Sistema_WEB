@@ -19,7 +19,6 @@ export const nextAuthOptions = {
 
            if(!user || !(await bcrypt.compare(password, user.password))) return;
 
-           console.log('entrou');
            return {
              email: user.email,
              name: user.firstName + " " + user.lastName,

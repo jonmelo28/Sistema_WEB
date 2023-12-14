@@ -1,5 +1,8 @@
+'use client';
+
 import { faCalendar, faRightFromBracket, faUserShield } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
@@ -8,6 +11,7 @@ import React from "react";
 export default function Navbar(){
     const date = new Date();
     const mes = new Array("01","02","03","04","05","06","07","08","09","10","11","12");
+    const {data:session} = useSession();
 
     return <nav className="bg-zinc-300 w-[calc(100%-250px)] fixed py-2 px-16 flex justify-between">
         <div>
@@ -25,9 +29,11 @@ export default function Navbar(){
                     <FontAwesomeIcon icon={faUserShield} className="w-5"/>
                    
                 </span>
-                <Link href="/users" className="hover:text-sky-500 transition-all hover:-translate-y-[2px]">Jonatha Melo</Link>
+                <Link href="/users" className="hover:text-sky-500 transition-all hover:-translate-y-[2px]">{session?.user.name}</Link>
             </p>
-            <button className="flex items-center justify-center hover:text-sky-500 transition-all hover:-translate-y-[2px] gap-1">
+            <button 
+            onClick={ () => signOut() } 
+            className="flex items-center justify-center hover:text-sky-500 transition-all hover:-translate-y-[2px] gap-1">
                 <FontAwesomeIcon icon={faRightFromBracket} className="w-5"/>
                 <span>Sair</span>
             </button>

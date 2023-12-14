@@ -1,6 +1,10 @@
+'use client';
+
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 
 export default function Home() {
+  const {data:session} = useSession();
   return (
   <div  className="h-[100vh] flex flex-col items-center">
     <div>
@@ -11,7 +15,7 @@ export default function Home() {
         />
         
     </div>
-    <p className="mt-8">Seja bem vindo Jonatha Melo</p>
+    <p className="mt-8">Seja bem vindo {session?.user.name}</p>
   </div>
   );
   
