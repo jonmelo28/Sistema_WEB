@@ -25,3 +25,16 @@ export async function GET(request){
 
     return NextResponse.json(user);
 }
+
+export async function POST(request){
+    await connectToDB();
+
+    const body = await request.json();
+    const user = await User.create({
+        ...body,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+    });
+
+    return NextResponse.json(user, { status: 201 });
+}

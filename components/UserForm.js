@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function UserForm({onSubmit}){
+export default function UserForm({onSubmit, isLoading}){
     return (
         <form className="max-w-md" onSubmit={onSubmit}>
             <div className="flex gap-4">
@@ -59,7 +59,9 @@ export default function UserForm({onSubmit}){
                     </select>
                 </div>
             </div>
-            <button disabled className="bg-sky-500 hover:bg-sky-600 transition-all p-2 text-white disabled:bg-zinc-500 w-full rounded">
+            <button
+             disabled={isLoading}
+             className="bg-sky-500 hover:bg-sky-600 transition-all p-2 text-white disabled:bg-zinc-500 w-full rounded">
                 Cadastrar Usuário
             </button>
         </form>

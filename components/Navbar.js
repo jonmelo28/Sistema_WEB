@@ -1,6 +1,6 @@
 'use client';
 
-import { faCalendar, faRightFromBracket, faUserShield } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faRightFromBracket, faUser, faUserShield } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -26,7 +26,7 @@ export default function Navbar(){
         <div className="flex items-center gap-4">
             <p className="flex items-center">
                 <span className="flex mr-1 bg-zinc-900 rounded-full text-white w-8 h-8 items-center justify-center">
-                    <FontAwesomeIcon icon={faUserShield} className="w-5"/>
+                    <FontAwesomeIcon icon={session?.user.role == 'admin' ? faUserShield : faUser} className="w-5"/>
                    
                 </span>
                 <Link href="/users" className="hover:text-sky-500 transition-all hover:-translate-y-[2px]">{session?.user.name}</Link>
