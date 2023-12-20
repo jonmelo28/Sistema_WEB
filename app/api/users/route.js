@@ -3,30 +3,21 @@ import { connectToDB } from "@/utils/DAO";
 import { NextResponse } from "next/server";
 
 export async function GET(request){
+  
+  try{
     await connectToDB();
 
-    const data = {
-        firstName:"Jonatha",
-        lastName: "Melo",
-        email: "jonatha@email.com",
-        password: "12345678",
-        birthday: "1992-03-31",
-        gender: "M",
-        phone: "79981133883",
-        role: "admin",
-    };  
-
-    const user = await User.create({
-        ...data,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
-    });
+  const users = await User.find();
          
 
-    return NextResponse.json(user);
+    return NextResponse.json({users});
+}catch(err){
+    return NextResponse.json({message: "ocorreu um erro ao mostrar os Usuários "}, { status: 500 });
+}
 }
 
 export async function POST(request){
+   try{
     await connectToDB();
 
     const body = await request.json();
@@ -37,4 +28,7 @@ export async function POST(request){
     });
 
     return NextResponse.json(user, { status: 201 });
+}catch(err){
+    return NextResponse.json({message: "ocorreu um erro ao cadastrar o Usuário "}, { status: 500 });
+}
 }

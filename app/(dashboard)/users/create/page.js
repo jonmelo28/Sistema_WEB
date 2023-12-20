@@ -22,7 +22,7 @@ export default function page(){
         fetch('/api/users', {
             method:"POST",
             body: JSON.stringify(userData),
-            //ficou no video 3 01:26:00
+            //ficou no video 3 01:55:00
         }).then((res) => {
             if(!res.ok){
                 throw new Error("Ocorreu um erro ao cadastrar Usuário");
