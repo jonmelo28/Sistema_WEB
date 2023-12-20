@@ -29,7 +29,7 @@ export default function Navbar(){
                     <FontAwesomeIcon icon={session?.user.role == 'admin' ? faUserShield : faUser} className="w-5"/>
                    
                 </span>
-                <Link href="/users" className="hover:text-sky-500 transition-all hover:-translate-y-[2px]">{session?.user.name}</Link>
+                <Link href={"/users/" + session?.user.email} className="hover:text-sky-500 transition-all hover:-translate-y-[2px]">{session?.user.name}</Link>
             </p>
             <button 
             onClick={ () => signOut() } 
