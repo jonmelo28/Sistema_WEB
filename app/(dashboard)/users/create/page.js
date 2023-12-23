@@ -37,7 +37,7 @@ export default function page(){
             alert("Ocorreu um erro ao cadastrar o Usuário"+ userData.email);
             setIsLoading(false);
         });
-    }
+    };
 
     return (<>
      <PageHeader title="Cadastrar Usuário"></PageHeader>
